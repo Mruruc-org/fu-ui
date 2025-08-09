@@ -1,5 +1,5 @@
 import { Search, X } from "lucide-react";
-import { act, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useSearch from "../../hooks/useSearch";
 
 const DEBOUNCE_DELAY = 500; // 500ms delay before auto-searching
@@ -53,7 +53,7 @@ const CompactSearchBar = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       //if (searchQuery.trim() !== "") {
-        handleSearch();
+      handleSearch();
       //}
     }, DEBOUNCE_DELAY);
 

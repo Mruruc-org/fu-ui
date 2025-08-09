@@ -1,16 +1,15 @@
 import {
+  ArrowUp,
   Facebook,
-  Twitter,
+  Heart,
   Instagram,
   Linkedin,
   Mail,
-  Phone,
   MapPin,
-  Globe,
-  ArrowUp,
-  Heart,
+  Phone,
+  Twitter
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Footer = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
