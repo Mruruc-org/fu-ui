@@ -2,7 +2,7 @@ import { programStaticData } from "../data";
 import type { SearchFilters } from "../types/filter.types";
 import type { Program } from "../types/program.types";
 
-const API_URI = "http://localhost:8080/api/v1/programs";
+//const API_URI = "http://localhost:8080/api/v1/programs";
 
 export async function fetchProgramById(
   programId: number
@@ -18,8 +18,8 @@ export async function fetchProgramById(
 export const fetchPrograms = async (
   query: string,
   filters: SearchFilters,
-  page: number = 1,
-  perPage: number = 10
+  //page: number = 1,
+  //perPage: number = 10
 ): Promise<Program[]> => {
   return new Promise((resolve) => {
     setTimeout(() => {
