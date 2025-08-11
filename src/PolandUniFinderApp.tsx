@@ -1,10 +1,10 @@
+import { Provider } from "react-redux";
 import {
   createBrowserRouter,
   RouterProvider,
   type RouteObject,
 } from "react-router";
 import getRoutes from "./routes/student-routes";
-import { Provider } from "react-redux";
 import store from "./store/store";
 
 const routes: RouteObject[] = getRoutes();

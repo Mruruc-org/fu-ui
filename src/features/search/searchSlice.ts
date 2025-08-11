@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { SearchFilters } from "../../types/filter.types";
 import type { Program } from "../../types/program.types";
-import { fetchProgramsThunk } from "./searchThunk";
+import { fetchProgramByIdThunk, fetchProgramsThunk } from "./searchThunk";
 
 interface SearchState {
   query: string;
@@ -23,7 +23,7 @@ const initialState: SearchState = {
     field: "all",
     city: "all",
     language: "english",
-    tuitionMax: 10_000,
+    tuitionMax: 20_000,
     tuitionMin: 0,
   },
 };
@@ -62,6 +62,26 @@ export const searchSlice = createSlice({
       .addCase(fetchProgramsThunk.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message ?? "Failed to fetch programs";
+      })
+
+      // Fetch program by ID
+      .addCase(fetchProgramByIdThunk.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(fetchProgramByIdThunk.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        const programExists = state.searchResults.some(
+          (program) => program.id === action.payload?.id
+        );
+
+        if (!programExists && action.payload) {
+          state.searchResults.push(action.payload);
+        }
+      })
+      .addCase(fetchProgramByIdThunk.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message ?? "Failed to fetch program details";
       });
   },
 });

@@ -6,7 +6,7 @@ import NavigationBar from "../components/common/NavigationBar";
 import { setSearchQuery } from "../features/search/searchSlice";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 
-const DISCOVERY_PATH = "/discovery";
+const PROGRAMS_PATH = "/programs";
 
 const StudentDiscovery = () => {
   const navigate = useNavigate();
@@ -21,18 +21,18 @@ const StudentDiscovery = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (query.trim()) {
-      navigate(DISCOVERY_PATH);
+      navigate(PROGRAMS_PATH);
     }
   };
   const handleSearch = (term?: string) => {
-    if(term?.trim()){
+    if (term?.trim()) {
       dispatch(setSearchQuery(term));
     }
-    navigate(DISCOVERY_PATH);
+    navigate(PROGRAMS_PATH);
   };
   const handleBrowseAllPrograms = () => {
     dispatch(setSearchQuery(""));
-    navigate(DISCOVERY_PATH);
+    navigate(PROGRAMS_PATH);
   };
 
   const handleClearSearch = () => {

@@ -8,53 +8,9 @@ const CompactSearchBar = () => {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const { searchQuery, handleQueryChange, handleClearSearch, handleSearch } =
     useSearch();
-  // const { query, activeFilters } = useAppSelector((state) => state.search);
-  // const dispatch = useAppDispatch();
-
-  // // a memoized function to trigger the search thunk
-  // const triggerSearch = useCallback(() => {
-  //   dispatch(fetchProgramsThunk({ query, filters: activeFilters }));
-  // }, [query, activeFilters, dispatch]);
-
-  // // useEffect for debounced searching as the user types
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     if (query.trim() !== "") {
-  //       triggerSearch();
-  //     }
-  //   }, DEBOUNCE_DELAY);
-  //   return () => {
-  //     clearTimeout(timer);
-  //   };
-  // }, [query, activeFilters, triggerSearch]);
-
-  // // Handler for immediate search (Enter key or click)
-  // const handleImmediateSearch = (event?: React.FormEvent) => {
-  //   event?.preventDefault();
-  //   triggerSearch();
-  // };
-
-  // const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   dispatch(setSearchQuery(event.target.value));
-  // };
-  // const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-  //   if (event.key === "Enter") {
-  //     handleImmediateSearch();
-  //   }
-  // };
-
-  // const clearSearch = () => {
-  //   dispatch(clearSearchQuery());
-  //   // Immediately fetch all results after clearing
-  //   // To do this, we need to dispatch the thunk with an empty query
-  //   dispatch(fetchProgramsThunk({ query: "", filters: activeFilters }));
-  // };
-
   useEffect(() => {
     const timer = setTimeout(() => {
-      //if (searchQuery.trim() !== "") {
       handleSearch();
-      //}
     }, DEBOUNCE_DELAY);
 
     return () => clearTimeout(timer);
